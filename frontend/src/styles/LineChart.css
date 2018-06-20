@@ -1,0 +1,35 @@
+.linechart_path {
+    stroke-width: 1;
+    fill: none; 
+    stroke: url(#line_fade);
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: dash 1s linear forwards;
+}
+
+.linechart_axis {
+    stroke: #eee;
+}
+
+/* .c-line {
+    height: 100%;
+    width: 100%;
+} */
+
+.linechart_area {
+    fill: url(#gradient_fill);
+    stroke: none;
+    opacity: .4;
+    animation: fade-in 1s linear forwards;
+}
+
+@keyframes dash {
+    to {
+      stroke-dashoffset: 0;
+    }
+}
+
+@keyframes fade-in {
+    from {opacity: 0}
+    to {opacity:0.4}
+}

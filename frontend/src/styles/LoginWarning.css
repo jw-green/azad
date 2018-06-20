@@ -1,0 +1,26 @@
+.c-warning {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 98%;
+    color: rgb(102, 39, 39);
+    background-color: rgb(255, 205, 205);
+    margin: auto;
+    padding: 5px 0;
+    border-radius: 3px;
+    border: 1px solid salmon;
+    animation: fadein 1s;
+}
+
+.c-warning_icon {
+    margin-left: 5%;
+}
+
+.c-warning_message {
+    margin-right: 5%;
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}

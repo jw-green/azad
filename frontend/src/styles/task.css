@@ -1,0 +1,14 @@
+.c-task__container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 300px;
+}
+
+.c-task__title {
+    width: 150px;
+}
+
+.c-task__status {
+    width: 150px;
+}

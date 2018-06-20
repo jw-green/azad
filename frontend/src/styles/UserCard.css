@@ -1,0 +1,42 @@
+.c-user_card__container {
+    width: 150px;
+    height: 75px;
+    margin-right: 45px;
+}
+
+.c-user_card {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100%;
+    border: 1px solid #eee;
+    border-radius: 8px;
+}
+
+.c-user_card__portrait {
+    height: 50px;
+    width: 50px;
+    border-radius: 100%;
+    display: inline-block;
+}
+
+.c-user_card__info > p {
+    -webkit-margin-before: 0px;
+    -webkit-margin-after: 0px;
+}
+
+.c-user_card__info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.c-user_card__username {
+    font-weight: 600;
+    font-size: 12pt;
+}
+
+.c-user_card__level {
+    font-size: 10pt;
+}
