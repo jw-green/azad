@@ -50,9 +50,10 @@ class BookNote(models.Model):
 class BookList(models.Model):
     title = models.CharField(max_length=255)
     # tags = 
-    created_by = models.ForeignKey(User, null=True, related_name="book_list")
+    created_by = models.ForeignKey(User, null=True, related_name="book_list_created")
+    shared_with = models.ForeignKey(User, null=True, related_name="book_list_shared")
     books = models.ManyToManyField(Book, default=0)
-    added = added = models.DateTimeField(auto_now_add=True)
+    added = models.DateTimeField(auto_now_add=True)
     title_slug = models.SlugField(null=True, editable=False)
 
     def __str__(self):

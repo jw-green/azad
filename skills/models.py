@@ -62,4 +62,33 @@ class UserLift(models.Model):
 
         super(UserLift, self).save(*args, **kwargs)
 
+class Skill(models.Model):
+    name = models.CharField(max_length=255)
+    short_name = models.CharField(max_length=255)
+    min_value = models.IntegerField(default=1)
+    max_value = models.IntegerField(default=10)
 
+    def __str__(self):
+        return "%s, %s" % (self.name, self.short_name)
+
+class UserSkills(models.Model):
+    skill = models.OneToOneField(Skill, on_delete=models.CASCADE)
+    skill_level = models.IntegerField(default=1)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return "%s, %s" % (self.user.username, self.skill.short_name)
+
+    def save(self, *args, **kwargs):
+        if self.skill_level > self.skill.max_value:
+            # Cap at max level
+            self.skill_level = self.skill.max_value
+        elif self.skill_level < self.skill.min_value:
+            #Floor at min level
+            self.skill_level = self.skill.min_value
+
+        super(UserSkills, self).save(*args, **kwargs)
+
+    class Meta:
+        verbose_name = "User Skills"
+        verbose_name_plural = "Users' Skills"
