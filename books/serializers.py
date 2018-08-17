@@ -17,13 +17,13 @@ class BookNoteSerializer(serializers.ModelSerializer):
     book = BookSerializer(read_only=True)
     class Meta:
         model = BookNote
-        fields = ('id', 'book', 'content', )
+        fields = ('id', 'book', 'title', 'content',)
 
 class BookListSerializer(serializers.ModelSerializer):
     book = BookSerializer(read_only=True)
     class Meta:
         model = BookList
-        fields = ('id', 'books', 'content', )
+        fields = ('id', 'books', 'content' )
     
 
 

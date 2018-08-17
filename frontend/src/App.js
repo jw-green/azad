@@ -45,7 +45,7 @@ class RootContainerComponent extends Component {
       <BrowserRouter>
       <Switch>
         <Route exact path="/" component={Login}/>
-        <PrivateRoute exact path="/Books/:slug" component={BookNotes}/>
+        <PrivateRoute exact path="/Books/:id" component={BookNotes} fish=""/>
         <PrivateRoute exact path="/Books" component={Books}/>
         <PrivateRoute exact path="/Tasks" component={() => <TaskListView showWarn={true}/>} />
         <PrivateRoute exact path="/Lifts" component={Lifts} />

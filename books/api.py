@@ -23,10 +23,14 @@ class BookNoteViewSet(viewsets.ModelViewSet):
     serializer_class = BookNoteSerializer
 
     def get_queryset(self):
-        return self.request.user.book_notes.all()
+        queryset = self.request.user.book_notes.all()
+        note_id = self.request.query_params.get('id', None)
+        if note_id is not None:
+            queryset = queryset.filter(book=note_id)
+        return queryset
 
     def perform_create(self, serializer):
-        serializer.save(owner=self.request.user)
+        serializer.save(owner=self.request.user, book_id=int(self.request.data['book']))
 
 class BookListViewSet(viewsets.ModelViewSet):
     queryset = BookList.objects.all()

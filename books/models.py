@@ -34,7 +34,8 @@ class Book(models.Model):
 
 class BookNote(models.Model):
     # At the moment, one note per book?
-    book = models.ForeignKey(Book, default=0)
+    book = models.ForeignKey(Book, default=1)
+    title = models.TextField(default="New Note")
     content = models.TextField()
     owner = models.ForeignKey(
                                 User, 
@@ -45,7 +46,7 @@ class BookNote(models.Model):
     added = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return "%s, %s" % (self.owner.username, self.book.title)
+        return "%s, %s: %s" % (self.owner.username, self.book.title, self.title)
 
 class BookList(models.Model):
     title = models.CharField(max_length=255)

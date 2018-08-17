@@ -34,3 +34,26 @@
     color: white;
     text-align: center;
 }
+
+.c-new_note_form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.c-new_note_form-title {
+    font-size: 2.5em;
+    border: none;
+    background-color: transparent;
+    font-weight: 100;
+    margin-bottom: 5px;
+}
+
+.c-new_note_form-content {
+    font-size: 1em;
+    border: none;
+    resize: none;
+    background-color: transparent;
+    font-weight: 100;
+    height: 50vh;
+}

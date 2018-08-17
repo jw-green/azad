@@ -20,7 +20,6 @@ class Books extends Component {
     }
 
     render() {
-        console.log(this.props)
         document.body.style.backgroundColor = "white";
         return (
             <div className="wrapper">
@@ -31,7 +30,7 @@ class Books extends Component {
                 <div className="c-lift__inner">
                     <div className="c-book_list">
                         {this.props.books.map(res => (
-                            <Link to={{pathname: `/Books/${res.title_slug}`, title: res.title, id: res.id}} key={`book_${res.id}`}>
+                            <Link to={{pathname: `/Books/${res.id}`, title: res.title, id: res.id}} key={`book_${res.id}`}>
                             <div className="c-book_cover">
                                 <div className="c-book">
                                     <p>{res.title}, {res.author.last_name}</p>
