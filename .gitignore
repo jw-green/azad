@@ -1,0 +1,15 @@
+
+.vscode/
+*/migrations/
+
+*.pyo
+*.pyc
+settings.py
+
+# Django stuff:
+*.log
+local_settings.py
+settings.py
+db.sqlite3
+token
+webpack-stats.dev.json
