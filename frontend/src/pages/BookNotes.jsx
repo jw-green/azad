@@ -94,7 +94,7 @@ class BookNotes extends Component {
         return (
             <div className="wrapper">
                 <div className="c-lift_title">
-                    <h1>{"Details: " + this.state.title}</h1>
+                    <h1>{"Notes: " + this.state.title}</h1>
                     <UserCard image={nyanko} />
                 </div>
                 <div className="c-control_buttons">
@@ -139,7 +139,7 @@ class BookNotes extends Component {
         return (
             <div className="wrapper">
                 <div className="c-lift_title">
-                    <h1>{"Details: " + this.state.title}</h1>
+                    <h1>{"Notes: " + this.state.title}</h1>
                     <UserCard image={nyanko} />
                 </div>
                 <button className="c-note_action_button" onClick={(e) => this.setState({ view_note_id: "" })}>
@@ -188,7 +188,9 @@ class BookNotes extends Component {
                     <textarea className="c-new_note_form-content"
                               onChange={(e) => this.setState({ content: e.target.value })}
                               placeholder="Notes"/>
-                    <input type="submit" value="Submit"/>
+                    <input type="submit" 
+                           className="c-new_note_form-submit"
+                           value="Submit"/>
                 </form>
                 </div>
             </div>
