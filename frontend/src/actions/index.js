@@ -5,5 +5,6 @@ import * as books from "./books";
 import * as book_notes from "./book_notes";
 import * as markets from "./markets";
 import * as skills from "./skills";
+import * as authors from "./authors";
 
-export { tasks, lifts, auth, books, book_notes, markets, skills }
+export { tasks, lifts, auth, books, book_notes, markets, skills, authors }

@@ -6,6 +6,7 @@ import books from "./books";
 import book_notes from "./book_notes";
 import markets from "./markets";
 import skills from "./skills";
+import authors from "./authors";
 
 const azadApp = combineReducers({
     tasks,
@@ -15,6 +16,7 @@ const azadApp = combineReducers({
     book_notes,
     markets,
     skills,
+    authors,
 })
 
 export default azadApp;

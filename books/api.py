@@ -1,4 +1,4 @@
-from rest_framework import viewsets, permissions, generics
+from rest_framework import viewsets, permissions, generics, filters
 
 from rest_framework.response import Response
 
@@ -11,11 +11,18 @@ class BookViewSet(viewsets.ModelViewSet):
     queryset = Book.objects.all()
     permission_classes = [permissions.AllowAny, ]
     serializer_class = BookSerializer
+    filter_backends = (filters.SearchFilter,)
+    search_fields = ('title', )
+
+    def perform_create(self, serializer):
+        serializer.save(read_by=[self.request.user,], author_id=int(self.request.data['author']))
 
 class AuthorViewSet(viewsets.ModelViewSet):
     queryset = Author.objects.all()
     permission_classes = [permissions.AllowAny, ]
     serializer_class = AuthorSerializer
+    filter_backends = (filters.SearchFilter,)
+    search_fields = ('full_name', )
 
 class BookNoteViewSet(viewsets.ModelViewSet):
     queryset = BookNote.objects.all()

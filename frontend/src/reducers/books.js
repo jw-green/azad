@@ -10,6 +10,9 @@ function books(state=initialState, action) {
         case 'FETCH_BOOKS':
             return [...state, ...action.books];
 
+        case 'ADD_BOOK':
+            return [...state, ...action.books];
+
         default:
             return state;
     }

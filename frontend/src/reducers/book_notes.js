@@ -8,7 +8,7 @@ function book_notes(state=initialState, action) {
     switch (action.type) {
 
         case 'ADD_BOOK_NOTE':
-            return [...state, action.task];
+            return [...state, action.book_notes];
 
         case 'FETCH_BOOK_NOTES':
             return [...state, ...action.book_notes];

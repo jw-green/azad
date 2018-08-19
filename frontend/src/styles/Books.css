@@ -48,6 +48,37 @@
     text-align: center;
 }
 
+.c-new_book_field, .c-new_book_field-bottom {
+    border: none;
+    background-color: transparent;
+    outline: none;
+    font-size: 2.5em;
+    margin-bottom: 5px;
+    -webkit-margin-before: 0em;
+    font-weight: 100;
+}
+
+.c-new_book_field-bottom {
+    margin-bottom: 10%;
+}
+
+.c-authors_dropdown {
+    background-color: #eee;
+    font-weight: 100;
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+.c-authors_dropdown p {
+    -webkit-margin-before: 0em;
+    -webkit-margin-after: 0em;
+    padding: 1em;
+}
+
+.c-authors_dropdown p:hover {
+    background-color: #bbb;
+    cursor: pointer;
+}
+
 .c-new_note_form {
     display: flex;
     flex-direction: column;
