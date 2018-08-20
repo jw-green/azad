@@ -10,6 +10,9 @@ function authors(state=initialState, action) {
         case 'SEARCH_AUTHORS':
             return [...state, ...action.authors];
 
+        case 'ADD_AUTHOR':
+            return [...state, ...action.authors];
+
         default:
             return state;
     }

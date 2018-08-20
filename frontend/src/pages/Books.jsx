@@ -26,8 +26,9 @@ class Books extends Component {
         new_book_author: "",
         new_book_author_id: 0,
         new_book_genre: "",
+        new_author_first: "",
+        new_author_last: "",
         search_dropdown: false,
-        loaded: false,
     }
 
     componentDidMount() {
@@ -43,8 +44,9 @@ class Books extends Component {
             new_book_author: "",
             new_book_author_id: 0,
             new_book_genre: "",
+            new_author_first: "",
+            new_author_last: "",
             search_dropdown: false,
-            loaded: false,
         });
     }
 
@@ -123,6 +125,28 @@ class Books extends Component {
     }
 
     // ==================================================================================
+    // submitBook
+    // - Submit book via API to backend
+    // ==================================================================================
+
+
+    submitBook = (e) => {
+        e.preventDefault();
+        if (
+            this.state.new_book_title !== "" &&
+            this.state.new_book_author_id !==0
+           ) {
+            this.props.addBook(
+                               this.state.new_book_title, 
+                               this.state.new_book_author_id, 
+                               this.state.new_book_genre
+                              )
+        }
+        this.resetState();
+        window.location.reload();
+    }
+
+    // ==================================================================================
     // searchBookAuthor(search_string)
     // - Use a search string (longer than 3 characters) to query the backend
     //   for authors.
@@ -188,14 +212,14 @@ class Books extends Component {
                     </button>
                 </div>
                 <div className="c-lift__inner">
-                <form className="c-new_note_form" onSubmit={this.submitTask}>
+                <form className="c-new_note_form" onSubmit={this.submitAuthor}>
                     <input
                         className="c-new_note_form-title"
-                        onChange={(e) => this.setState({ note_title: e.target.value })}
+                        onChange={(e) => this.setState({ new_author_first: e.target.value })}
                         placeholder="First Name"/>
                     <input
                         className="c-new_note_form-title"
-                        onChange={(e) => this.setState({ note_title: e.target.value })}
+                        onChange={(e) => this.setState({ new_author_last: e.target.value })}
                         placeholder="Last Name"/>
                     <input type="submit" 
                            className="c-new_note_form-submit"
@@ -204,6 +228,27 @@ class Books extends Component {
                 </div>
             </div>
         )
+    }
+
+    // ==================================================================================
+    // submitAuthor
+    // - Submit book via API to backend
+    // ==================================================================================
+
+
+    submitAuthor = (e) => {
+        e.preventDefault();
+        if (
+            this.state.new_author_first !== "" &&
+            this.state.new_author_last !== ""
+           ) {
+            this.props.addAuthor(
+                               this.state.new_author_first,
+                               this.state.new_author_last
+                              )
+        }
+        this.resetState();
+        window.location.reload();
     }
 
     // ==================================================================================
@@ -230,7 +275,6 @@ class Books extends Component {
                             <div className="c-book_cover">
                                 <div className="c-book">
                                     <p>{res.title}, {res.author.last_name}</p>
-                                    {/* <ProgressBar percent={res.sten_value} /> */}
                                 </div>
                             </div>
                             </Link>
@@ -239,23 +283,6 @@ class Books extends Component {
                 </div>
             </div>
         )
-    }
-
-    submitBook = (e) => {
-        e.preventDefault();
-        console.log(this.state.new_book_author_id)
-        if (
-            this.state.new_book_title !== "" &&
-            this.state.new_book_author_id !==0
-           ) {
-            this.props.addBook(
-                               this.state.new_book_title, 
-                               this.state.new_book_author_id, 
-                               this.state.new_book_genre
-                              )
-        }
-        this.resetState();
-        window.location.reload();
     }
 
 // ==================================================================================
@@ -289,6 +316,9 @@ const mapDispatchToProps = dispatch => {
         },
         addBook: (title, author, genre) => {
             dispatch(books.addBook(title, author, genre));
+        },
+        addAuthor: (first_name, last_name) => {
+            dispatch(authors.addAuthor(first_name, last_name));
         },
         searchAuthors: (search_string) => {
             dispatch(authors.searchAuthors(search_string));
