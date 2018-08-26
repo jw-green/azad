@@ -11,6 +11,7 @@ import UserCard from '../components/UserCard';
 import back from '../arrow-left.svg';
 import add from '../plus.svg';
 import nyanko from '../nyanko.png'
+import SearchBar from '../components/SearchBar';
 
 class Books extends Component {
 
@@ -29,9 +30,12 @@ class Books extends Component {
         new_author_first: "",
         new_author_last: "",
         search_dropdown: false,
+        filter: "",
+        filter_type: "book"
     }
 
     componentDidMount() {
+        console.log("Books Mounted");
         this.props.fetchBooks();
     }
 
@@ -47,6 +51,8 @@ class Books extends Component {
             new_author_first: "",
             new_author_last: "",
             search_dropdown: false,
+            filter: "",
+            filter_type: "book"
         });
     }
 
@@ -88,10 +94,10 @@ class Books extends Component {
                 </div>
                 <div className="c-control_buttons">
                     <button className="c-note_action_button" onClick={(e) => this.setState({ add_book: false })}>
-                        <img src={back} className="backArrow" height="40px"/>
+                        <img src={back} className="backArrow" height="40px" alt="Go Back"/>
                     </button>
                     <button className="c-note_action_button" onClick={(e) => this.setState({ add_author: true })}>
-                        <img src={add} height="40px"/>
+                        <img src={add} height="40px" alt="Add Author"/>
                     </button>
                 </div>
                 {/* { this.backButtonContext(book_note) } */}
@@ -208,7 +214,7 @@ class Books extends Component {
                 </div>
                 <div className="c-control_buttons">
                     <button className="c-note_action_button" onClick={(e) => this.setState({ add_author: false })}>
-                        <img src={back} className="backArrow" height="40px"/>
+                        <img src={back} className="backArrow" height="40px" alt="Go Back"/>
                     </button>
                 </div>
                 <div className="c-lift__inner">
@@ -252,11 +258,22 @@ class Books extends Component {
     }
 
     // ==================================================================================
+    // onChange
+    // - Handle change for child components
+    // ==================================================================================
+
+    onChange(field, value) {
+        this.setState({[field]: value});
+    }
+
+    // ==================================================================================
     // listBooks()
     // - Default behaviour. Display a list of the user's books.
     // ==================================================================================
 
     listBooks() {
+        let book_list = this.bookFilter()
+
         return (
             <div className="wrapper">
                 <div className="c-lift_title">
@@ -265,12 +282,18 @@ class Books extends Component {
                 </div>
                 <div className="c-control_buttons">
                     <button className="c-note_action_button" onClick={(e) => this.setState({ add_book: true })}>
-                        <img src={add} height="40px"/>
+                        <img src={add} height="40px" alt="Add Book"/>
                     </button>
+                    <select name="filter_type" onChange={(e) => this.setState({ filter_type: e.target.value })}>
+                        <option value="book">Book</option>
+                        <option value="author">Author</option>
+                        <option value="genre">Genre</option>
+                    </select>
+                    <SearchBar ref="book_searchBar" default_value="Filter Books" onChange={this.onChange.bind(this)}/>
                 </div>
                 <div className="c-lift__inner">
                     <div className="c-book_list">
-                        {this.props.books.map(res => (
+                        {book_list.map(res => (
                             <Link to={{pathname: `/Books/${res.id}`, title: res.title, id: res.id}} key={`book_${res.id}`}>
                             <div className="c-book_cover">
                                 <div className="c-book">
@@ -284,6 +307,19 @@ class Books extends Component {
             </div>
         )
     }
+
+bookFilter() {
+    if (this.state.filter_type === "book") {
+        return this.props.books.filter((book) =>
+        book.title.toLowerCase().includes(this.state.filter.toLowerCase()));
+    } else if (this.state.filter_type === "author") {
+        return this.props.books.filter((book) =>
+        book.author.full_name.toLowerCase().includes(this.state.filter.toLowerCase()));
+    } else {
+        return this.props.books.filter((book) =>
+        book.genre.toLowerCase().includes(this.state.filter.toLowerCase()));
+    }
+}
 
 // ==================================================================================
 // Render Component

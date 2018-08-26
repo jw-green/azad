@@ -100,11 +100,11 @@ class BookNotes extends Component {
                 <div className="c-control_buttons">
                     <Link to="/Books/">
                         <button className="c-note_action_button">
-                            <img src={back} className="backArrow" height="40px"/>
+                            <img src={back} className="backArrow" height="40px" alt="Go Back"/>
                         </button>
                     </Link>
                     <button className="c-note_action_button" onClick={(e) => this.setState({ add_note: true })}>
-                        <img src={add} height="40px"/>
+                        <img src={add} height="40px" alt="Add Note"/>
                     </button>
                 </div>
                 <div className="c-lift__inner">
@@ -143,7 +143,7 @@ class BookNotes extends Component {
                     <UserCard image={nyanko} />
                 </div>
                 <button className="c-note_action_button" onClick={(e) => this.setState({ view_note_id: "" })}>
-                    <img src={back} className="backArrow" height="40px"/>
+                    <img src={back} className="backArrow" height="40px" alt="Go Back"/>
                 </button>
                 <div className="c-note_wrapper">
                     <div className="c-new_note_form">
@@ -218,14 +218,14 @@ class BookNotes extends Component {
         if (book_ref.length > 0) {
             return (
                 <button className="c-note_action_button" onClick={(e) => this.setState({ add_note: false })}>
-                    <img src={back} className="backArrow" height="40px"/>
+                    <img src={back} className="backArrow" height="40px" alt="Go Back"/>
                 </button>
             )                  
         } else {
             return (
                 <Link to="/Books/">
                     <button className="c-note_action_button">
-                        <img src={back} className="backArrow" height="40px"/>
+                        <img src={back} className="backArrow" height="40px" alt="Go Back"/>
                     </button>
                 </Link>
             )
