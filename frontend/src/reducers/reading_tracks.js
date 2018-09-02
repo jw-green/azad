@@ -11,7 +11,6 @@ function reading_tracks(state=initialState, action) {
             return [...state, ...action.reading_tracks];
 
         default:
-            console.log("hit")
             return state;
     }
 }
