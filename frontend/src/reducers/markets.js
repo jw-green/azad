@@ -1,5 +1,5 @@
-const initialState = [
-]
+const initialState = {
+}
 
 function markets(state=initialState, action) {
 
@@ -8,7 +8,7 @@ function markets(state=initialState, action) {
     switch (action.type) {
 
         case 'FETCH_DATA':
-            return [...state, ...action.markets];
+            return [...state.markets, action.markets];
 
         default:
             return state;

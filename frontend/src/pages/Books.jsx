@@ -6,12 +6,11 @@ import { books, authors } from '../actions';
 
 import '../styles/Lifts.css';
 import '../styles/Books.css';
-import UserCard from '../components/UserCard';
 
 import back from '../arrow-left.svg';
 import add from '../plus.svg';
-import nyanko from '../nyanko.png'
 import SearchBar from '../components/SearchBar';
+import TitleBar from '../components/TitleBar';
 
 class Books extends Component {
 
@@ -88,10 +87,7 @@ class Books extends Component {
     addBook() {
         return (
             <div className="wrapper">
-                <div className="c-lift_title">
-                    <h1>Add a New Book</h1>
-                    <UserCard image={nyanko} />
-                </div>
+                <TitleBar title="Add a New Book"/>
                 <div className="c-control_buttons">
                     <button className="c-note_action_button" onClick={(e) => this.setState({ add_book: false })}>
                         <img src={back} className="backArrow" height="40px" alt="Go Back"/>
@@ -208,10 +204,7 @@ class Books extends Component {
     addAuthor() {
         return (
             <div className="wrapper">
-                <div className="c-lift_title">
-                    <h1>Add a New Author</h1>
-                    <UserCard image={nyanko} />
-                </div>
+                <TitleBar title="Add a New Author"/>
                 <div className="c-control_buttons">
                     <button className="c-note_action_button" onClick={(e) => this.setState({ add_author: false })}>
                         <img src={back} className="backArrow" height="40px" alt="Go Back"/>
@@ -276,10 +269,7 @@ class Books extends Component {
 
         return (
             <div className="wrapper">
-                <div className="c-lift_title">
-                    <h1>Books</h1>
-                    <UserCard image={nyanko} />
-                </div>
+                <TitleBar title="Bookshelf"/>
                 <div className="c-control_buttons">
                     <button className="c-note_action_button" onClick={(e) => this.setState({ add_book: true })}>
                         <img src={add} height="40px" alt="Add Book"/>
@@ -338,6 +328,7 @@ bookFilter() {
 // ==================================================================================
 
 const mapStateToProps = state => {
+    console.log(state)
     return {
         authors: state.authors,
         books: state.books,

@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import Book, Author, BookNote, BookList
+from .models import Book, Author, BookNote, BookList, ReadingTrack
 
 class AuthorSerializer(serializers.ModelSerializer):
     class Meta:
@@ -24,6 +24,12 @@ class BookListSerializer(serializers.ModelSerializer):
     class Meta:
         model = BookList
         fields = ('id', 'books', 'content' )
+
+class ReadingTrackSerializer(serializers.ModelSerializer):
+    books = BookSerializer(read_only=True, many=True)
+    class Meta:
+        model = ReadingTrack
+        fields = ('id', 'title', 'subject', 'level', 'books', 'added', 'track_length' )
     
 
 

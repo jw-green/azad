@@ -12,7 +12,7 @@ import '../styles/Contents.css';
 class Contents extends Component {
 
     componentDidMount() {
-        // this.props.fetchTasks();
+
     }
 
     render() {
@@ -25,6 +25,7 @@ class Contents extends Component {
                     <p><Link to="/Lifts">Lifts</Link></p>
                     <p><Link to="/Books">Books</Link></p>
                     <p><Link to="/Markets">Markets</Link></p>
+                    {/* <p><Link to="/Skills">Skills</Link></p> */}
                     {/* <Link to="">Design</Link> */}
                 </div>
             </div>

@@ -4,8 +4,8 @@ from rest_framework.response import Response
 
 from knox.models import AuthToken
 
-from .models import Book, Author, BookNote, BookList
-from .serializers import AuthorSerializer, BookSerializer, BookNoteSerializer, BookListSerializer
+from .models import Book, Author, BookNote, BookList, ReadingTrack
+from .serializers import AuthorSerializer, BookSerializer, BookNoteSerializer, BookListSerializer, ReadingTrackSerializer
 
 class BookViewSet(viewsets.ModelViewSet):
     queryset = Book.objects.all()
@@ -49,3 +49,8 @@ class BookListViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
+
+class ReadingTrackViewSet(viewsets.ModelViewSet):
+    queryset = ReadingTrack.objects.all()
+    # permission_classes = [permissions.IsAuthenticated, ]
+    serializer_class = ReadingTrackSerializer

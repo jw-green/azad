@@ -17,6 +17,7 @@ import BookNotes from "./pages/BookNotes";
 import MarketsPortfolio from './pages/MarketsPortfolio';
 import Contents from './pages/Contents';
 import Skills from './pages/Skills';
+import ReadingTracks from './pages/ReadingTracks';
 
 let store = createStore(azadApp, applyMiddleware(thunk));
 
@@ -52,6 +53,7 @@ class RootContainerComponent extends Component {
         <PrivateRoute exact path="/Markets" component={MarketsPortfolio}/>
         <PrivateRoute exact path="/Contents" component={Contents}/>
         <PrivateRoute exact path="/Skills" component={Skills}/>
+        <PrivateRoute exact path="/ReadingTracks" component={ReadingTracks}/>
         <Route component={NotFound} />
       </Switch>
     </BrowserRouter>
