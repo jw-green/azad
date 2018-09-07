@@ -7,5 +7,6 @@ import * as markets from "./markets";
 import * as skills from "./skills";
 import * as authors from "./authors";
 import * as reading_tracks from "./reading_tracks";
+import * as sessions from "./sessions";
 
-export { tasks, lifts, auth, books, book_notes, markets, skills, authors, reading_tracks }
+export { tasks, lifts, auth, books, book_notes, markets, skills, authors, reading_tracks, sessions }

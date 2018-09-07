@@ -8,6 +8,7 @@ import markets from "./markets";
 import skills from "./skills";
 import authors from "./authors";
 import reading_tracks from "./reading_tracks";
+import sessions from "./sessions";
 
 const azadApp = combineReducers({
     tasks,
@@ -19,6 +20,7 @@ const azadApp = combineReducers({
     skills,
     authors,
     reading_tracks,
+    sessions,
 })
 
 export default azadApp;
