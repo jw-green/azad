@@ -95,10 +95,7 @@ export const completeTask = (index, title, state) => {
     }
 
     let body = JSON.stringify({title, state, });
-    console.log("Actions " + index)
     let taskId = getState().tasks[index].id;
-
-    console.log("Action:" + state)
 
     return fetch(`/api/tasks/${taskId}/`, {headers, method: "PUT", body})
       .then(res => {
@@ -143,12 +140,18 @@ export const deleteTask = (id) => {
     return (dispatch, getState) => {
 
         let headers = {"Content-Type": "application/json"};
+
+        let {token} = getState().auth;
+
+        if (token) {
+          headers["Authorization"] = `Token ${token}`;
+        }
+
         let task_id = getState().tasks[id].id;
     
         return fetch(`/api/tasks/${task_id}/`, {headers, method: "DELETE"})
           .then(res => {
             if (res.ok) {
-              console.log(res)
               return dispatch({
                 type: 'DELETE_TASK',
                 id

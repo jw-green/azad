@@ -5,7 +5,7 @@ const initialState = [
 
 function tasks(state=initialState, action) {
 
-    state = []
+    // state = []
 
     let taskList = state;
 
@@ -19,13 +19,13 @@ function tasks(state=initialState, action) {
             taskToUpdate.title = action.task.title;
             taskToUpdate.state = action.task.state;
             taskList.splice(action.index, 1, taskToUpdate);
-            return taskList;
+            return [...taskList];
 
         case 'COMPLETE_TASK':
             let taskToComplete = taskList[action.index]
             taskToComplete.state = action.task.state;
             taskList.splice(action.index, 1, taskToComplete);
-            return taskList;
+            return [...taskList];
 
         case 'DELETE_TASK':
             taskList.splice(action.id, 1);

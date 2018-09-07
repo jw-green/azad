@@ -6,12 +6,11 @@ import { tasks } from '../actions';
 
 import '../styles/taskList.css';
 
-import UserCard from '../components/UserCard';
+import TitleBar from '../components/TitleBar';
 
 // import cross from '../x.svg';
 // import circle from '../circle.svg';
 
-import nyanko from '../nyanko.png';
 
 class TaskListView extends Component {
     state = {
@@ -21,6 +20,7 @@ class TaskListView extends Component {
     }
 
     resetForm = () => {
+        console.log("Fired");
         this.setState({
             title: "",
             state: "",
@@ -51,6 +51,16 @@ class TaskListView extends Component {
         this.setState({ title: "", state: "", updateTaskId: null });
     }
 
+    handleDelete(index) {
+        this.props.deleteTask(index);
+        this.resetForm();
+    }
+
+    handleComplete(index, title, state) {
+        this.props.completeTask(index, title, state);
+        this.resetForm();
+    }
+
     componentDidMount() {
         this.props.fetchTasks();
     }
@@ -59,19 +69,16 @@ class TaskListView extends Component {
         document.body.style.backgroundColor = "white";
         return (
             <div className="wrapper">
-                <div className="c-task_list__title">
-                    <h1> Tasks </h1>
-                    <UserCard image={nyanko} />
-                </div>
+                <TitleBar title="Tasks"/>
                 <div className="c-task_list__inner">
                     <div className="c-task_list">
                         {this.props.tasks.map((task, index) => (
                             <div className="c-task_detail" key={`task_${index}`}>
                                 <Task title={task.title}
                                     status={task.state} />
-                                <button onClick={() => this.props.deleteTask(index)}>Delete</button>
+                                <button onClick={() => this.handleDelete(index)}>Delete</button>
                                 <button onClick={() => this.selectForEdit(index)}>Edit</button>
-                                <button onClick={() => this.props.completeTask(index, task.title, task.state)}>Complete</button>
+                                <button onClick={() => this.handleComplete(index, task.title, task.state)}>Complete</button>
                             </div>
                         ))}
                     </div>
