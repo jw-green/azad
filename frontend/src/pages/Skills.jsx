@@ -8,6 +8,7 @@ import ProgressBar from '../components/ProgressBar';
 import UserCard from '../components/UserCard';
 
 import nyanko from '../nyanko.png'
+import TitleBar from '../components/TitleBar';
 
 class Skills extends Component {
     state = {
@@ -31,10 +32,7 @@ class Skills extends Component {
         document.body.style.backgroundColor = "white";
         return (
             <div className="wrapper">
-                <div className="c-skills_title">
-                    <h1>Skills</h1>
-                    <UserCard image={nyanko} />
-                </div>
+                <TitleBar title="Skills"/>
                 <div className="c-skills__inner">
                     <div className="c-skills_list">
                         {this.props.skills.map(res => (
@@ -49,6 +47,10 @@ class Skills extends Component {
         )
     }
 }
+
+// ==================================================================================
+// Redux Store Mappings
+// ==================================================================================
 
 const mapStateToProps = state => {
     console.log(state.skills)

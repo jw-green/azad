@@ -150,6 +150,10 @@ class MarketsPortfolio extends Component {
 
 }
 
+// ==================================================================================
+// Redux Store Mappings
+// ==================================================================================
+
 const mapStateToProps = state => {
     return {
         close: state.markets,

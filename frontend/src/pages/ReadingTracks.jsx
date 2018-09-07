@@ -95,6 +95,10 @@ class ReadingTracks extends Component {
     }
 }
 
+// ==================================================================================
+// Redux Store Mappings
+// ==================================================================================
+
 const mapStateToProps = state => {
     return {
         tracks: state.reading_tracks,
