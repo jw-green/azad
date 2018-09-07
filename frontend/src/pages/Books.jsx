@@ -251,7 +251,7 @@ class Books extends Component {
     }
 
     // ==================================================================================
-    // onChange
+    // onChange()
     // - Handle change for child components
     // ==================================================================================
 
@@ -281,35 +281,38 @@ class Books extends Component {
                     </select>
                     <SearchBar ref="book_searchBar" default_value="Filter Books" onChange={this.onChange.bind(this)}/>
                 </div>
-                <div className="c-lift__inner">
-                    <div className="c-book_list">
-                        {book_list.map(res => (
-                            <Link to={{pathname: `/Books/${res.id}`, title: res.title, id: res.id}} key={`book_${res.id}`}>
-                            <div className="c-book_cover">
-                                <div className="c-book">
-                                    <p>{res.title}, {res.author.last_name}</p>
-                                </div>
+                <div className="c-book_list">
+                    {book_list.map(res => (
+                        <Link to={{pathname: `/Books/${res.id}`, title: res.title, id: res.id}} key={`book_${res.id}`}>
+                        <div className="c-book_cover">
+                            <div className="c-book">
+                                <p>{res.title}, {res.author.last_name}</p>
                             </div>
-                            </Link>
-                        ))}
-                    </div>
+                        </div>
+                        </Link>
+                    ))}
                 </div>
             </div>
         )
     }
 
-bookFilter() {
-    if (this.state.filter_type === "book") {
-        return this.props.books.filter((book) =>
-        book.title.toLowerCase().includes(this.state.filter.toLowerCase()));
-    } else if (this.state.filter_type === "author") {
-        return this.props.books.filter((book) =>
-        book.author.full_name.toLowerCase().includes(this.state.filter.toLowerCase()));
-    } else {
-        return this.props.books.filter((book) =>
-        book.genre.toLowerCase().includes(this.state.filter.toLowerCase()));
+    // ==================================================================================
+    // bookFilter()
+    //    - Filter book based on book title, author name, or genre
+    // ==================================================================================
+
+    bookFilter() {
+        if (this.state.filter_type === "book") {
+            return this.props.books.filter((book) =>
+            book.title.toLowerCase().includes(this.state.filter.toLowerCase()));
+        } else if (this.state.filter_type === "author") {
+            return this.props.books.filter((book) =>
+            book.author.full_name.toLowerCase().includes(this.state.filter.toLowerCase()));
+        } else {
+            return this.props.books.filter((book) =>
+            book.genre.toLowerCase().includes(this.state.filter.toLowerCase()));
+        }
     }
-}
 
 // ==================================================================================
 // Render Component
