@@ -4,9 +4,17 @@ from rest_framework.response import Response
 
 from knox.models import AuthToken
 
-from .models import Task
-from .serializers import (TaskSerializer, CreateUserSerializer, 
+from .models import Task, Session
+from .serializers import (SessionSerializer, TaskSerializer, CreateUserSerializer, 
                           UserSerializer, LoginUserSerializer)
+
+class SessionViewSet(viewsets.ModelViewSet):
+    queryset = Session.objects.all()
+    permission_classes = [permissions.IsAuthenticated, ]
+    serializer_class = SessionSerializer
+
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
 
 class TaskViewSet(viewsets.ModelViewSet):
     queryset = Task.objects.all()

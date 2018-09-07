@@ -25,8 +25,8 @@ class Contents extends Component {
                     <p><Link to="/Lifts">Lifts</Link></p>
                     <p><Link to="/Books">Books</Link></p>
                     <p><Link to="/Markets">Markets</Link></p>
-                    {/* <p><Link to="/Skills">Skills</Link></p> */}
-                    {/* <Link to="">Design</Link> */}
+                    <p><Link to="/Sessions">Sessions</Link></p>
+                    <p><Link to="/ReadingTracks">Reading Tracks</Link></p>
                 </div>
             </div>
         )

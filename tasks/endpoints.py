@@ -1,10 +1,11 @@
 from django.conf.urls import include, url
 from rest_framework import routers
 
-from .api import TaskViewSet, RegistrationAPI, LoginAPI, UserAPI
+from .api import TaskViewSet, SessionViewSet, RegistrationAPI, LoginAPI, UserAPI
 
 router = routers.DefaultRouter()
-router.register('tasks', TaskViewSet, 'tasks')
+router.register('tasks', TaskViewSet)
+router.register('sessions', SessionViewSet)
 
 urlpatterns = [
     url("^", include(router.urls)),
